@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WCF.Playing.Contracts\WCF.Playing.Contracts.csproj">
+    <ProjectReference Include="..\WCF.Playing.Contracts\WCF.Playing.Contracts.csproj">
       <Project>{a1c68e08-a79b-47a5-88f0-535996e7afe5}</Project>
       <Name>WCF.Playing.Contracts</Name>
     </ProjectReference>
