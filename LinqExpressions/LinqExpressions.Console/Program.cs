@@ -18,7 +18,13 @@ namespace LinqExpressions.Console
         public void DoSomething(int z)
         {
             this.X = z;
+
+            var ia = this.GetHashCode();
+            var iaa1 = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(this);
+            var iaa2 = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(this);
+            var iaa3 = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(this);
         }
+
     }
 
 
@@ -44,8 +50,35 @@ namespace LinqExpressions.Console
             var x2 = list[0].X;
 
             point.DoSomething(20);
+            point.X = 300;
 
             var x3 = point.X;
+
+
+            var array = new PointS[20];
+
+            array[0].X = 10;
+            array[2] = point;
+            array[2].X = 444;
+            array[2].DoSomething(555);
+
+            var isStruct = array[0] as ValueType;
+
+            var s1 = new PointS();
+
+            var os1 = (object)s1;
+            var os2 = (object)s1;
+
+            
+            var hash1 = s1.GetHashCode();
+            var hash11 = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(s1);
+
+            var hash21 = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(os1);
+            var hash22 = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(os2);
+
+            var hash31 = os1.GetHashCode();
+            var hash32 = os2.GetHashCode();
+
 
             Console.WriteLine(); 
         }
@@ -158,9 +191,9 @@ namespace LinqExpressions.Console
         static void Main(string[] args)
         {
 
-            //PlayWithStruct();
+            PlayWithStruct();
             //PlayWithEnumerables();
-            PlayWithExpressions();
+            //PlayWithExpressions();
 
             Console.ReadKey();
         }
